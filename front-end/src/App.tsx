@@ -3,7 +3,6 @@ import RootLayout from "./layout/RootLayout";
 import HomePage from "./pages/HomePage";
 import User from "./pages/User";
 import ErrorPage from "./pages/ErrorPage";
-import Login from "./pages/Login";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const router = createBrowserRouter([
@@ -14,7 +13,6 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "user", element: <User /> },
-      { path: "login", element: <Login /> },
     ],
   },
 ]);

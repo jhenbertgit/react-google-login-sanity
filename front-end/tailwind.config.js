@@ -1,95 +1,80 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+module.exports = {
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
-      margin: {
-        320: "320px",
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
-      width: {
-        190: "190px",
-        275: "275px",
-        300: "300px",
-        340: "340px",
-        350: "350px",
-        656: "656px",
-        880: "880px",
-        508: "508px",
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
-      height: {
-        80: "80px",
-        340: "340px",
-        370: "370px",
-        420: "420px",
-        510: "510px",
-        600: "600px",
-        685: "685px",
-        800: "800px",
-        "90vh": "90vh",
-      },
-      flex: {
-        0.7: "0.7 1 0%",
-      },
-      maxHeight: {
-        370: "370px",
-      },
-      minWidth: {
-        210: "210px",
-        350: "350px",
-        620: "620px",
-      },
-      textColor: {
-        lightGray: "#F1EFEE",
-        primary: "#FAFAFA",
-        secColor: "#efefef",
-        navColor: "#BEBEBE",
-      },
+      /**not from shadcn-ui */
       backgroundColor: {
-        mainColor: "#FBF8F9",
-        secondaryColor: "#F0F0F0",
         blackOverlay: "rgba(0, 0 ,0 ,0.7)",
       },
       keyframes: {
-        "slide-in": {
-          "0%": {
-            "-webkit-transform": "translateX(-200px)",
-            transform: "translateX(-200px)",
-          },
-          "100%": {
-            "-webkit-transform": "translateX(0px)",
-            transform: "translateX(0px)",
-          },
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-
-        "slide-fwd": {
-          "0%": {
-            "-webkit-transform": "translateZ(0px)",
-            transform: "translateZ(0px)",
-          },
-          "100%": {
-            "-webkit-transform": "translateZ(160px)",
-            transform: "translateZ(160px)",
-          },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
         },
       },
       animation: {
-        "slide-in": "slide-in 0.5s ease-out",
-        "slide-fwd":
-          " slide-fwd 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
-      },
-      transitionProperty: {
-        height: "height",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
-    cursor: {
-      "zoom-in": "zoom-in",
-      pointer: "pointer",
-    },
   },
-  variants: {
-    // backgroundColor: ['active'],
-    extend: {},
-  },
-
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };

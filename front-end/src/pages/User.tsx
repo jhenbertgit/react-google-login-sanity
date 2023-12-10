@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { userQuery } from "../utils";
 import { client } from "../client";
+import { Navbar } from "../components";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
-type User = {
+export type User = {
   userName: string;
   image: string;
 };
 
 const User = () => {
   const [user, setUser] = useState<User | null>(null);
+  const navigate = useNavigate();
+
   const userInforStr = localStorage.getItem("user");
   const userInfo =
     userInforStr !== null && userInforStr !== "undefined"
@@ -21,12 +26,34 @@ const User = () => {
       setUser(data[0]);
     });
   }, []);
+
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.clear();
+    navigate("/", { replace: true });
+  };
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">User Page</h1>
-      <p>{user?.userName}</p>
-      <img src={user?.image} />
-    </div>
+    <>
+      <Navbar user={user} />
+      <div className="text-center">
+        <h1 className="text-3xl font-bold">
+          Hello, <span className="text-teal-500">{user?.userName}!</span>{" "}
+          Welcome to test site
+        </h1>
+        <p>
+          Don't worry your email address does not save in database. This site
+          used Sanity visite their website{" "}
+          <a
+            href="https://www.sanity.io/"
+            target="_blank"
+            className="underline link"
+          >
+            here
+          </a>
+        </p>
+        <Button onClick={handleLogout}>Logout</Button>
+      </div>
+    </>
   );
 };
 

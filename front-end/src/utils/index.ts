@@ -2,7 +2,7 @@ import { JwtPayload, jwtDecode } from "jwt-decode";
 
 export const createOrGetUser = async (
   response: any
-): Promise<JwtPayload | undefined> => {
+): Promise<JwtPayload | undefined | any> => {
   try {
     const decoded = jwtDecode(response.credential);
 

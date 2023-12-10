@@ -16,13 +16,11 @@ const Login = () => {
 
   const responseGoogle = async (response: any) => {
     const { name, picture, sub } = await createOrGetUser(response);
-
     const userData: UserData = {
       name,
       picture,
       sub,
     };
-
     localStorage.setItem("user", JSON.stringify(userData));
 
     const doc = {
@@ -50,7 +48,7 @@ const Login = () => {
         />
         <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay">
           <div className="p-5">
-            <img src={logo} />
+            <img src={logo} alt="react-logo" />
           </div>
           <div className="shadow-2xl"></div>
           <GoogleLogin
