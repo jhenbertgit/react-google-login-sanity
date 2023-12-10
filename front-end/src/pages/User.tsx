@@ -42,7 +42,7 @@ const User = () => {
         </h1>
         <p>
           Don't worry your email address does not save in database. This site
-          used Sanity visite their website{" "}
+          used Sanity visit their website{" "}
           <a
             href="https://www.sanity.io/"
             target="_blank"
