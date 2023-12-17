@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userQuery } from "../utils";
 import { client } from "../client";
-import { Navbar } from "../components";
+import { Navbar } from "@/components";
 
 export type User = {
   userName: string;
@@ -42,8 +42,7 @@ const User = () => {
           Welcome to test site
         </h1>
         <p>
-          Don't worry your email address does not save in database. This site is
-          using Sanity, visit their website{" "}
+          This site is using Sanity, visit their website{" "}
           <a
             href="https://www.sanity.io/"
             target="_blank"

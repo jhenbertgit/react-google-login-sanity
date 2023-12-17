@@ -1,10 +1,10 @@
-import { Login } from "../components";
+import { Login } from "@/components";
 
 const HomePage = () => {
   return (
-    <div>
+    <>
       <Login />
-    </div>
+    </>
   );
 };
 
