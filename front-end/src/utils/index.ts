@@ -5,7 +5,7 @@ export const createOrGetUser = async (
 ): Promise<JwtPayload | undefined | any> => {
   try {
     const decoded = jwtDecode(response.credential);
-
+    // console.log(decoded);
     return decoded;
   } catch (error) {
     console.error(error);

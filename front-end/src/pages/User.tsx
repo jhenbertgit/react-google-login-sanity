@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { userQuery } from "../utils";
 import { client } from "../client";
 import { Navbar } from "../components";
-import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 
 export type User = {
   userName: string;
   image: string;
+  email: string;
 };
 
 const User = () => {
@@ -32,26 +32,26 @@ const User = () => {
     localStorage.clear();
     navigate("/", { replace: true });
   };
+
   return (
     <>
-      <Navbar user={user} />
+      <Navbar user={user} handleLogout={handleLogout} />
       <div className="text-center">
         <h1 className="text-3xl font-bold">
           Hello, <span className="text-teal-500">{user?.userName}!</span>{" "}
           Welcome to test site
         </h1>
         <p>
-          Don't worry your email address does not save in database. This site
-          used Sanity visit their website{" "}
+          Don't worry your email address does not save in database. This site is
+          using Sanity, visit their website{" "}
           <a
             href="https://www.sanity.io/"
             target="_blank"
-            className="underline link"
+            className="underline font-bold hover:text-destructive"
           >
             here
           </a>
         </p>
-        <Button onClick={handleLogout}>Logout</Button>
       </div>
     </>
   );

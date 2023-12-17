@@ -9,17 +9,19 @@ interface UserData {
   name: string;
   picture: string;
   sub: string;
+  email: string;
 }
 
 const Login = () => {
   const navigate = useNavigate();
 
   const responseGoogle = async (response: any) => {
-    const { name, picture, sub } = await createOrGetUser(response);
+    const { name, picture, sub, email } = await createOrGetUser(response);
     const userData: UserData = {
       name,
       picture,
       sub,
+      email,
     };
     localStorage.setItem("user", JSON.stringify(userData));
 
@@ -28,6 +30,7 @@ const Login = () => {
       _type: "user",
       userName: name,
       image: picture,
+      email: email,
     };
 
     client.createIfNotExists(doc).then(() => {

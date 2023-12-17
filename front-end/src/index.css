@@ -74,13 +74,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-/*custom class*/
-@layer utilities {
-  .link {
-    font-weight: bold;
-  }
-  .link:hover {
-    color: red;
-  }
-}
